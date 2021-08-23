@@ -44,7 +44,7 @@ while True:
         end_time = start_time + datetime.timedelta(days=1)
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-XRP", 0.5)
+            target_price = get_target_price("KRW-XRP", 0.4)
             current_price = get_current_price("KRW-XRP")
             if target_price < current_price:
                 krw = get_balance("KRW")
@@ -53,7 +53,7 @@ while True:
         else:
             xrp = get_balance("XRP")
             if xrp > 4.0:
-                upbit.sell_market_order("KRW-XRP", XRP*0.9995)
+                upbit.sell_market_order("KRW-XRP", xrp*0.9995)
         time.sleep(1)
     except Exception as e:
         print(e)
